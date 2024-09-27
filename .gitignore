@@ -1,1 +1,4 @@
 node_modules
+
+# This file is pulled automatically after running viteburner
+NetscriptDefinitions.d.ts

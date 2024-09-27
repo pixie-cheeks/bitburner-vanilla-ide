@@ -17,8 +17,9 @@ module.exports = {
       'error',
       { number: { minimumDigits: 0 } },
     ],
-    'no-plusplus': 'off',
     'import/extensions': ['error', 'ignorePackages'],
+    'import/prefer-default-export': 'off',
+    'no-plusplus': 'off',
     'no-param-reassign': ['error', { props: false }],
 
     'lines-between-class-members': [

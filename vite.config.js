@@ -1,5 +1,6 @@
 import { defineConfig } from 'viteburner';
 import { resolve } from 'path';
+
 export default defineConfig({
   resolve: {
     alias: {
@@ -7,8 +8,9 @@ export default defineConfig({
       '/src': resolve(__dirname, 'src'),
     },
   },
-  build: { minify: false },
+  build: { minify: false, outDir: 'dist', emptyOutDir: true },
   viteburner: {
     watch: [{ pattern: 'src/**/*.{js,script,txt}' }],
+    sourcemap: 'inline',
   },
 });

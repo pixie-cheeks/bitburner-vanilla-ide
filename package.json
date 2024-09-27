@@ -1,19 +1,14 @@
 {
   "name": "no-browser-template",
   "version": "1.0.0",
-  "description": "",
   "main": "src/script.js",
-  "type": "module",
   "scripts": {
-    "test": "jest",
     "dev": "viteburner",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "devDependencies": {
+    "@types/node": "^18.15.3",
     "eslint": "^8.57.1",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-prettier": "^9.1.0",
@@ -21,22 +16,10 @@
     "eslint-plugin-jest": "^28.8.3",
     "eslint-plugin-unicorn": "^55.0.0",
     "prettier": "^3.3.3",
-    "vite": "^4.5.5",
+    "vite": "^4.1.4",
     "viteburner": "^0.5.3"
   },
   "prettier": {
     "singleQuote": true
-  },
-  "babel": {
-    "presets": [
-      [
-        "@babel/preset-env",
-        {
-          "targets": {
-            "node": "current"
-          }
-        }
-      ]
-    ]
   }
 }

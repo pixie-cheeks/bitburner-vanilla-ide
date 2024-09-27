@@ -21,6 +21,7 @@ module.exports = {
     'import/prefer-default-export': 'off',
     'no-plusplus': 'off',
     'no-param-reassign': ['error', { props: false }],
+    'no-await-in-loop': 'off',
 
     'lines-between-class-members': [
       'error',

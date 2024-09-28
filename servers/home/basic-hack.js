@@ -1,15 +1,11 @@
 /** @param {NS} ns */
+import checkServer from './utils/check-server.js';
+
 export async function main(ns) {
   const [server] = ns.args;
-  if (!server) {
-    ns.tprint('Exiting. No server specified.');
-    return;
-  }
 
-  if (!ns.serverExists(server)) {
-    ns.tprint("Exiting. The specified server doesn't exist.");
-    return;
-  }
+  if (!checkServer(ns, server)) return;
+  if (!ns.hasRootAccess(server)) ns.nuke(server);
 
   const alwaysTrue = true;
   const serverMaxMoney = ns.getServerMaxMoney(server);

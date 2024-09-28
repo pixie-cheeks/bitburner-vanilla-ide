@@ -14,6 +14,7 @@ module.exports = {
     'no-console': 'off',
     'unicorn/better-regex': 'warn',
     'unicorn/no-array-for-each': 'off',
+    'unicorn/prevent-abbreviations': ['error', { allowList: { i: true } }],
     'unicorn/numeric-separators-style': [
       'error',
       { number: { minimumDigits: 0 } },

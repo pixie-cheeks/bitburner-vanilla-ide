@@ -5,13 +5,13 @@ export async function main(ns) {
   const source = 'home';
   const hackScript = 'basic-hack.js';
   const scriptMemoryUsage = ns.getScriptRam(hackScript, source);
-  const adjacentHosts = ns.scan(source);
+  const adjacentHosts = ns
+    .scan(source)
+    .filter((host) => ns.getServerNumPortsRequired(host) < 1);
 
   const checkHost = (host) => {
     let errorMessage;
-    if (ns.getServerNumPortsRequired(host) > 0) {
-      errorMessage = 'The number of ports required is too high.';
-    } else if (!ns.scp(hackScript, host, source)) {
+    if (!ns.scp(hackScript, host, source)) {
       errorMessage = `Couldn't copy ${hackScript} from ${source} to ${host}`;
     }
 
@@ -21,13 +21,31 @@ export async function main(ns) {
     return false;
   };
 
+  const execResults = [];
   adjacentHosts.forEach((host) => {
     if (!checkHost(host)) return;
 
     const unusedServerRam =
       ns.getServerMaxRam(host) - ns.getServerUsedRam(host);
-    const maxNumberOfThreads = Math.floor(unusedServerRam / scriptMemoryUsage);
+    const maxNumberOfThreads = Math.round(
+      (unusedServerRam - (unusedServerRam % scriptMemoryUsage)) /
+        scriptMemoryUsage,
+    );
 
-    ns.exec(hackScript, host, maxNumberOfThreads, host);
+    if (maxNumberOfThreads <= 0) return;
+    if (!ns.hasRootAccess(host)) ns.nuke(host);
+    execResults.push([
+      ns.exec(hackScript, host, maxNumberOfThreads, host),
+      host,
+    ]);
   });
+
+  if (execResults.length === 0) {
+    ns.tprint("Didn't run any scripts.");
+    return;
+  }
+
+  execResults.forEach(([result, host]) =>
+    ns.tprint(`execResult for ${host}: ${result}`),
+  );
 }

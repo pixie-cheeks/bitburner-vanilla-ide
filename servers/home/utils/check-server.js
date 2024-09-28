@@ -1,5 +1,5 @@
 /** @param {NS} ns */
-import getAnsi from './get-ansi.js';
+import errorLog from './error-log.js';
 
 const checkServer = (ns, server) => {
   let errorMessage;
@@ -16,7 +16,7 @@ const checkServer = (ns, server) => {
 
   if (!errorMessage) return true;
 
-  ns.tprint(`${getAnsi('1;31')}Error: ${errorMessage}`);
+  errorLog(ns, errorMessage);
   return false;
 };
 

@@ -8,7 +8,7 @@ module.exports = {
     sourceType: 'module',
   },
   extends: ['airbnb-base', 'plugin:unicorn/recommended', 'prettier'],
-  ignorePatterns: ['*', '!src', '!src/**/*'],
+  ignorePatterns: ['*', '!servers', '!servers/**/*'],
   rules: {
     'no-unused-vars': 'warn',
     'no-console': 'off',

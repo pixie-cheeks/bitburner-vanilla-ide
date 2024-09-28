@@ -1,25 +1,25 @@
-import { context } from "esbuild";
-import { BitburnerPlugin } from "esbuild-bitburner-plugin";
+import { context } from 'esbuild';
+import { BitburnerPlugin } from 'esbuild-bitburner-plugin';
 
 const createContext = async () =>
   await context({
-    entryPoints: ["servers/**/*.js"],
-    outbase: "servers",
-    outdir: "build",
+    entryPoints: ['servers/**/*.js'],
+    outbase: 'servers',
+    outdir: 'build',
     plugins: [
       BitburnerPlugin({
         port: 12525,
-        types: "NetscriptDefinitions.d.ts",
+        types: 'NetscriptDefinitions.d.ts',
         mirror: {
-          mirror: ["home", "n00dles"],
+          mirror: ['home', 'n00dles'],
         },
         distribute: {},
       }),
     ],
-    bundle: true,
-    format: "esm",
-    platform: "browser",
-    logLevel: "debug",
+    bundle: false,
+    format: 'esm',
+    platform: 'browser',
+    logLevel: 'debug',
   });
 
 const ctx = await createContext();

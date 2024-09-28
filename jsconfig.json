@@ -1,4 +1,3 @@
 {
-  "compilerOptions": { "baseUrl": "." },
-  "include": ["./servers/**/*", "./global.d.ts"]
+  "compilerOptions": { "baseUrl": "." }
 }

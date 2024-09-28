@@ -13,6 +13,7 @@ module.exports = {
     'no-unused-vars': 'warn',
     'no-console': 'off',
     'unicorn/better-regex': 'warn',
+    'unicorn/no-array-for-each': 'off',
     'unicorn/numeric-separators-style': [
       'error',
       { number: { minimumDigits: 0 } },

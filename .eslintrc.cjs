@@ -22,6 +22,7 @@ module.exports = {
     'no-plusplus': 'off',
     'no-param-reassign': ['error', { props: false }],
     'no-await-in-loop': 'off',
+    'no-constant-condition': ['error', { checkLoops: false }],
 
     'lines-between-class-members': [
       'error',

@@ -7,11 +7,10 @@ export async function main(ns) {
   if (!checkServer(ns, server)) return;
   if (!ns.hasRootAccess(server)) ns.nuke(server);
 
-  const alwaysTrue = true;
   const serverMaxMoney = ns.getServerMaxMoney(server);
   const serverMinSecurityLevel = ns.getServerMinSecurityLevel(server);
 
-  while (alwaysTrue) {
+  while (true) {
     if (ns.getServerMoneyAvailable(server) < serverMaxMoney) {
       await ns.grow(server);
     } else if (ns.getServerSecurityLevel(server) > serverMinSecurityLevel) {

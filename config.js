@@ -16,7 +16,7 @@ const createContext = async () =>
         distribute: {},
       }),
     ],
-    bundle: false,
+    bundle: true,
     format: 'esm',
     platform: 'browser',
     logLevel: 'debug',

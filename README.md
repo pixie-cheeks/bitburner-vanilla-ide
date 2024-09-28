@@ -1,3 +1,3 @@
 # Workspace for Bitburner
 
-This repo uses viteburner to sync scripts with the bitburner game.
+This repo uses esbuild-bitburner-plugin to sync scripts with the bitburner game.

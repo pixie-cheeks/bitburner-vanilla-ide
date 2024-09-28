@@ -1,20 +1,21 @@
 {
   "name": "bitburner-vanilla-ide",
   "version": "1.0.0",
+  "type": "module",
   "scripts": {
-    "start": "viteburner",
+    "start": "node ./config.js",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
   },
   "devDependencies": {
+    "esbuild": "^0.23.1",
+    "esbuild-bitburner-plugin": "^1.6.2",
     "eslint": "^8.57.1",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-import": "^2.30.0",
     "eslint-plugin-unicorn": "^55.0.0",
-    "prettier": "^3.3.3",
-    "vite": "^4.5.5",
-    "viteburner": "^0.5.3"
+    "prettier": "^3.3.3"
   },
   "prettier": {
     "singleQuote": true

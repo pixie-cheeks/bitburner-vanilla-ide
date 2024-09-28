@@ -1,4 +1,6 @@
 node_modules
+mirror
+build
 
 # This file is pulled automatically after running viteburner
 NetscriptDefinitions.d.ts

@@ -1,3 +1,4 @@
 {
-  "cSpell.words": ["viteburner", "n00dles"]
+  "cSpell.words": ["n00dles", "tprint", "viteburner"],
+  "javascript.preferences.importModuleSpecifier": "non-relative"
 }

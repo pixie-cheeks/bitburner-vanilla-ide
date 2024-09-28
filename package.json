@@ -1,7 +1,6 @@
 {
   "name": "bitburner-vanilla-ide",
   "version": "1.0.0",
-  "main": "src/script.js",
   "scripts": {
     "start": "viteburner",
     "lint": "eslint .",

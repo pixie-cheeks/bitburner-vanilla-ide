@@ -1,6 +1,22 @@
 /** @param {NS} ns */
-export async function main(ns) {
-  const servers = [];
+const findAllServers = (ns) => {
+  const servers = {};
+  const scriptHome = ns.getHostname();
+  servers[scriptHome] = { visited: false };
 
-  ns.tprint(servers);
-}
+  const visitServer = (currentHost) => {
+    servers[currentHost].visited = true;
+
+    ns.scan(currentHost).forEach((hostName) => {
+      if (!servers[hostName]) servers[hostName] = { visited: false };
+
+      if (servers[hostName].visited) return;
+      visitServer(hostName);
+    });
+  };
+
+  visitServer(scriptHome);
+  return Object.keys(servers);
+};
+
+export default findAllServers;

@@ -1,5 +1,4 @@
 export default [
-  'home',
   'n00dles',
   'max-hardware',
   'phantasy',

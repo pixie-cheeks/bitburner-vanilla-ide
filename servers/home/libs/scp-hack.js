@@ -1,51 +1,36 @@
 import errorLog from '../utils/error-log.js';
+import flatHostnamesList from '../utils/flat-hostnames-list.js';
+import { isHackable } from '../utils/is-hackable.js';
+import getMaxThreads from '../utils/get-max-threads.js';
+import setupForHack from './setup-for-hack.js';
 
 /** @param {NS} ns */
 export async function main(ns) {
   const source = 'home';
-  const hackScript = 'basic-hack.js';
+  const hackScript = 'libs/basic-hack.js';
   const scriptMemoryUsage = ns.getScriptRam(hackScript, source);
-  const adjacentHosts = ns
-    .scan(source)
-    .filter((host) => ns.getServerNumPortsRequired(host) < 1);
+  const hackableServers = flatHostnamesList.filter((hostname) =>
+    isHackable(ns, hostname),
+  );
+  const execResults = [];
 
-  const checkHost = (host) => {
-    let errorMessage;
-    if (!ns.scp(hackScript, host, source)) {
-      errorMessage = `Couldn't copy ${hackScript} from ${source} to ${host}`;
+  hackableServers.forEach((hostname) => {
+    if (!ns.scp(hackScript, hostname, source)) {
+      errorLog(`Couldn't copy ${hackScript} from ${source} to ${hostname}`);
+      return;
     }
 
-    if (!errorMessage) return true;
-
-    errorLog(ns, errorMessage);
-    return false;
-  };
-
-  const execResults = [];
-  adjacentHosts.forEach((host) => {
-    if (!checkHost(host)) return;
-
-    const unusedServerRam =
-      ns.getServerMaxRam(host) - ns.getServerUsedRam(host);
-    const maxNumberOfThreads = Math.round(
-      (unusedServerRam - (unusedServerRam % scriptMemoryUsage)) /
-        scriptMemoryUsage,
-    );
-
+    const maxNumberOfThreads = getMaxThreads(ns, hostname, scriptMemoryUsage);
     if (maxNumberOfThreads <= 0) return;
-    if (!ns.hasRootAccess(host)) ns.nuke(host);
+
+    if (!ns.hasRootAccess(hostname)) setupForHack(ns, hostname);
     execResults.push([
-      ns.exec(hackScript, host, maxNumberOfThreads, host),
-      host,
+      hostname,
+      ns.exec(hackScript, hostname, maxNumberOfThreads, hostname),
     ]);
   });
 
-  if (execResults.length === 0) {
-    ns.tprint("Didn't run any scripts.");
-    return;
-  }
-
-  execResults.forEach(([result, host]) =>
-    ns.tprint(`execResult for ${host}: ${result}`),
+  execResults.forEach(([hostname, result]) =>
+    ns.tprint(`execResult for ${hostname}: ${result}`),
   );
 }

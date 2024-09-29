@@ -1,4 +1,4 @@
-import checkServer from './utils/check-server.js';
+import checkServer from '../utils/check-server.js';
 
 /** @param {NS} ns */
 export async function main(ns) {

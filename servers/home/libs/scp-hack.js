@@ -2,6 +2,7 @@ import errorLog from '../utils/error-log.js';
 import flatHostnamesList from '../utils/flat-hostnames-list.js';
 import { isHackable } from '../utils/is-hackable.js';
 import getMaxThreads from '../utils/get-max-threads.js';
+import findBestTarget from '../utils/find-best-target.js';
 import setupForHack from './setup-for-hack.js';
 
 /** @param {NS} ns */
@@ -12,6 +13,7 @@ export async function main(ns) {
   const hackableServers = flatHostnamesList.filter((hostname) =>
     isHackable(ns, hostname),
   );
+  const bestTarget = findBestTarget(ns, hackableServers);
   const execResults = [];
 
   hackableServers.forEach((hostname) => {
@@ -26,7 +28,7 @@ export async function main(ns) {
     if (!ns.hasRootAccess(hostname)) setupForHack(ns, hostname);
     execResults.push([
       hostname,
-      ns.exec(hackScript, hostname, maxNumberOfThreads, hostname),
+      ns.exec(hackScript, hostname, maxNumberOfThreads, bestTarget),
     ]);
   });
 

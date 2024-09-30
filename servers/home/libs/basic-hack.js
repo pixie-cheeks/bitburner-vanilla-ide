@@ -1,6 +1,12 @@
+import errorLog from '../utils/error-log.js';
+
 /** @param {NS} ns */
 export async function main(ns) {
-  const server = ns.args[0] || ns.getHostname();
+  const [server] = ns.args;
+  if (!server) {
+    errorLog(ns, 'No hostname provided.');
+    return;
+  }
 
   const serverMaxMoney = ns.getServerMaxMoney(server);
   const serverMinSecurityLevel = ns.getServerMinSecurityLevel(server);

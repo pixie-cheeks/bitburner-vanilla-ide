@@ -33,9 +33,9 @@ const preHackScript = (ns) => {
   const hackableServers = flatHostnamesList.filter((hostname) =>
     isHackable(ns, hostname),
   );
-  const scriptHost = ns.args[0] || findBestScriptHost(ns, hackableServers);
-  const target = ns.args[1] || findBestTarget(ns, hackableServers);
-  const doMaxThreads = ns.args[2] || false;
+  const doMaxThreads = ns.args[0] || false;
+  const scriptHost = ns.args[1] || findBestScriptHost(ns, hackableServers);
+  const target = ns.args[2] || findBestTarget(ns, hackableServers);
   const hackScript = 'libs/hack-script.js';
 
   if (checkForError({ ns, scriptHost, target, hackScript })) return;

@@ -20,6 +20,7 @@ export async function main(ns) {
     ns.getServerMinSecurityLevel(bestTarget),
   ];
 
+  let numberOfRunningServers = 0;
   hackableServers.forEach((hostname) => {
     if (!ns.scp(hackScript, hostname, source)) {
       errorLog(`Couldn't copy ${hackScript} from ${source} to ${hostname}`);
@@ -30,6 +31,16 @@ export async function main(ns) {
     if (maxNumberOfThreads <= 0) return;
 
     if (!ns.hasRootAccess(hostname)) nukeServer(ns, hostname);
-    ns.exec(hackScript, hostname, maxNumberOfThreads, ...scriptArguments);
+    const execPid = ns.exec(
+      hackScript,
+      hostname,
+      maxNumberOfThreads,
+      ...scriptArguments,
+    );
+    if (execPid > 0) numberOfRunningServers++;
   });
+
+  ns.tprint(
+    `Number of servers that ran hack-script on "${bestTarget}": ${numberOfRunningServers}`,
+  );
 }

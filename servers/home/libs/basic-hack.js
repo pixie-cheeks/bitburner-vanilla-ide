@@ -1,4 +1,4 @@
-import errorLog from '../utils/error-log.js';
+import errorLog from '../ns-utils/error-log.js';
 
 /** @param {NS} ns */
 export async function main(ns) {

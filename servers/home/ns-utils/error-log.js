@@ -1,4 +1,4 @@
-import getAnsi from './get-ansi.js';
+import getAnsi from '../utils/get-ansi.js';
 
 /** @param {NS} ns */
 function errorLog(ns, errorMessage) {

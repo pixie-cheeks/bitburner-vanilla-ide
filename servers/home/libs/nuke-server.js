@@ -9,7 +9,7 @@ const portOpeners = [
 ];
 
 /** @param {NS} ns */
-const setupForHack = (ns, hostname) => {
+const nukeServer = (ns, hostname) => {
   repeat(ns.getServerNumPortsRequired(hostname), (i) => {
     ns[portOpeners[i].methodName](hostname);
   });
@@ -17,4 +17,4 @@ const setupForHack = (ns, hostname) => {
   ns.nuke(hostname);
 };
 
-export default setupForHack;
+export default nukeServer;

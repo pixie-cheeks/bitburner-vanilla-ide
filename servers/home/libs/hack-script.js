@@ -3,7 +3,7 @@ import errorLog from '../ns-utils/error-log.js';
 const isUndefined = (variable) => variable === undefined;
 
 /** @param {NS} ns */
-export async function main(ns) {
+const scriptHack = async (ns) => {
   const [target, serverMaxMoney, serverMinSecurityLevel] = ns.args;
   if (
     [target, serverMaxMoney, serverMinSecurityLevel].some((argument) =>
@@ -23,4 +23,7 @@ export async function main(ns) {
       await ns.hack(target);
     }
   }
-}
+};
+
+const main = scriptHack;
+export { main, scriptHack };

@@ -6,7 +6,7 @@ import nukeServer from '../ns-utils/nuke-server.js';
 import getMaxThreads from '../ns-utils/get-max-threads.js';
 
 /** @param {NS} ns */
-export async function main(ns) {
+const preHackScript = (ns) => {
   const hackableServers = flatHostnamesList.filter((hostname) =>
     isHackable(ns, hostname),
   );
@@ -37,4 +37,8 @@ export async function main(ns) {
   } else {
     runScript(1);
   }
-}
+};
+
+const main = preHackScript;
+
+export { main, preHackScript };

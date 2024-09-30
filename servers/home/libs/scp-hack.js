@@ -6,7 +6,7 @@ import findBestTarget from '../ns-utils/find-best-target.js';
 import nukeServer from '../ns-utils/nuke-server.js';
 
 /** @param {NS} ns */
-export async function main(ns) {
+const scpHack = (ns) => {
   const source = 'home';
   const hackScript = 'libs/hack-script.js';
   const scriptMemoryUsage = ns.getScriptRam(hackScript, source);
@@ -43,4 +43,8 @@ export async function main(ns) {
   ns.tprint(
     `Number of servers that ran hack-script on "${bestTarget}": ${numberOfRunningServers}`,
   );
-}
+};
+
+/** @param {NS} ns */
+const main = scpHack;
+export { main, scpHack };

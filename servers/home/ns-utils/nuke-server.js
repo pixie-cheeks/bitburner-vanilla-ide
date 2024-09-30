@@ -4,7 +4,7 @@ const portOpeners = [
   { methodName: 'brutessh' },
   { methodName: 'ftpcrack' },
   { methodName: 'relaysmtp' },
-  { methodName: 'htmlworm' },
+  { methodName: 'httpworm' },
   { methodName: 'sqlinject' },
 ];
 

@@ -1,12 +1,13 @@
+const portOpeners = [
+  { filename: 'BruteSSH.exe' },
+  { filename: 'FTPCrack.exe' },
+  { filename: 'relaySMTP.exe' },
+  { filename: 'HTTPWorm.exe' },
+  { filename: 'SQLInject.exe' },
+];
+
 /** @param {NS} ns */
 const canOpenRequiredPorts = (ns, hostname) => {
-  const portOpeners = [
-    { filename: 'BruteSSH.exe' },
-    { filename: 'FTPCrack.exe' },
-    { filename: 'relaySMTP.exe' },
-    { filename: 'HTTPWorm.exe' },
-    { filename: 'SQLInject.exe' },
-  ];
   const numberOfPortOpeners = portOpeners.filter(({ filename }) =>
     ns.fileExists(filename),
   ).length;

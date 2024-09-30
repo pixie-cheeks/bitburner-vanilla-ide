@@ -2,7 +2,7 @@ import flatHostnamesList from '../data/flat-hostnames-list.js';
 import { isHackable } from '../ns-utils/is-hackable.js';
 import findBestTarget from '../ns-utils/find-best-target.js';
 import errorLog from '../ns-utils/error-log.js';
-import nukeServer from './nuke-server.js';
+import nukeServer from '../ns-utils/nuke-server.js';
 import getMaxThreads from '../ns-utils/get-max-threads.js';
 
 /** @param {NS} ns */

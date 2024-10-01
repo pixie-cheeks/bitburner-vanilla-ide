@@ -12,10 +12,10 @@ const scriptHack = async (ns) => {
   const serverMinSecurityLevel = ns.getServerMinSecurityLevel(target);
 
   while (true) {
-    if (ns.getServerMoneyAvailable(target) < serverMaxMoney) {
-      await ns.grow(target);
-    } else if (ns.getServerSecurityLevel(target) > serverMinSecurityLevel) {
+    if (ns.getServerSecurityLevel(target) > serverMinSecurityLevel) {
       await ns.weaken(target);
+    } else if (ns.getServerMoneyAvailable(target) < serverMaxMoney) {
+      await ns.grow(target);
     } else {
       await ns.hack(target);
     }

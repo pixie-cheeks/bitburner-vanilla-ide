@@ -22,5 +22,4 @@ const scriptHack = async (ns) => {
   }
 };
 
-const main = scriptHack;
-export { main, scriptHack };
+export { scriptHack as main, scriptHack };

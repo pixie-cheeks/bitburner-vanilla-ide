@@ -23,5 +23,4 @@ const superPs = (ns) => {
   }
 };
 
-const main = superPs;
-export { main, superPs };
+export { superPs as main, superPs };

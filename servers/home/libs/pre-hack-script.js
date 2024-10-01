@@ -60,6 +60,4 @@ const preHackScript = (ns) => {
   }
 };
 
-const main = preHackScript;
-
-export { main, preHackScript };
+export { preHackScript as main, preHackScript };

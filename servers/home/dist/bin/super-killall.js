@@ -11,5 +11,4 @@ const superKillAll = (ns) => {
   });
 };
 
-const main = superKillAll;
-export { main, superKillAll };
+export { superKillAll as main, superKillAll };

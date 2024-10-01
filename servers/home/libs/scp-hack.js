@@ -45,6 +45,4 @@ const scpHack = (ns) => {
   );
 };
 
-/** @param {NS} ns */
-const main = scpHack;
-export { main, scpHack };
+export { scpHack as main, scpHack };

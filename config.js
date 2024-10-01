@@ -14,6 +14,8 @@ const createContext = async () =>
           mirror: ['home'],
         },
         distribute: { 'build/home/bin': ['n00dles'] },
+        usePolling: true,
+        pollingInterval: 500,
       }),
     ],
     bundle: true,

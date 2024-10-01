@@ -1,4 +1,4 @@
-import flatHostnamesList from '../data/flat-hostnames-list.js';
+import flatHostnamesList from '../../data/non-pservers.js';
 
 const createMessage = (hostname, { filename, threads, pid, args }) =>
   `(T - ${threads}) (PID - ${pid}) ${hostname}:${filename} ${args.join(' ')}`;

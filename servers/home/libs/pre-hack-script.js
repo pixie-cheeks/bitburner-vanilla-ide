@@ -1,4 +1,4 @@
-import flatHostnamesList from '../data/flat-hostnames-list.js';
+import flatHostnamesList from '../data/non-pservers.js';
 import { isHackable } from '../ns-utils/is-hackable.js';
 import findBestScriptHost from '../ns-utils/find-best-script-host.js';
 import findBestTarget from '../ns-utils/find-best-target.js';

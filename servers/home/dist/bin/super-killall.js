@@ -1,4 +1,4 @@
-import flatHostnamesList from '../data/flat-hostnames-list.js';
+import flatHostnamesList from '../../data/non-pservers.js';
 
 /** @param {NS} ns */
 const superKillAll = (ns) => {

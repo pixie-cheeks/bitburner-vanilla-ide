@@ -1,5 +1,5 @@
 import errorLog from '../ns-utils/error-log.js';
-import flatHostnamesList from '../data/flat-hostnames-list.js';
+import flatHostnamesList from '../data/non-pservers.js';
 import { isHackable } from '../ns-utils/is-hackable.js';
 import getMaxThreads from '../ns-utils/get-max-threads.js';
 import findBestTarget from '../ns-utils/find-best-target.js';

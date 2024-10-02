@@ -4,7 +4,7 @@
  */
 const findAllServers = (ns) => {
   /**
-   * @type {{ [hostname: string]: {visited: boolean}}}
+   * @type {{[hostname: string]: {visited: boolean}}}
    */
   const servers = {};
 

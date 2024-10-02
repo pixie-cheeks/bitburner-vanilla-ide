@@ -38,6 +38,7 @@ module.exports = {
     'no-param-reassign': ['error', { props: false }],
     'no-await-in-loop': 'off',
     'no-constant-condition': ['error', { checkLoops: false }],
+    'func-style': 'error',
 
     'lines-between-class-members': [
       'error',

@@ -1,6 +1,9 @@
 import repeat from '../utils/repeat.js';
 
-/** @param {NS} ns */
+/**
+ * @param {NS} ns - The ns module.
+ * @param {string} hostname - Hostname of the server to nuke.
+ */
 const nukeServer = (ns, hostname) => {
   const portOpeners = [
     ns.brutessh,

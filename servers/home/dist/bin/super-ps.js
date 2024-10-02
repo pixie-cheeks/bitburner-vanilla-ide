@@ -1,18 +1,17 @@
-import flatHostnamesList from '../../data/non-pservers.js';
+import allServers from 'servers/home/data/all-servers.js';
+import createProcessLog from 'servers/home/ns-utils/create-process-log.js';
 
-const createMessage = (hostname, { filename, threads, pid, args }) =>
-  `(T - ${threads}) (PID - ${pid}) ${hostname}:${filename} ${args.join(' ')}`;
-
-/** @param {NS} ns */
+/** @param {NS} ns - ns module */
 const superPs = (ns) => {
+  /** @type {string[]} */
   const messages = [];
 
-  flatHostnamesList.forEach((hostname) => {
+  allServers.forEach((hostname) => {
     const processes = ns.ps(hostname);
     if (processes.length === 0) return;
 
     processes.forEach((process) =>
-      messages.push(createMessage(hostname, process)),
+      messages.push(createProcessLog(hostname, process)),
     );
   });
 

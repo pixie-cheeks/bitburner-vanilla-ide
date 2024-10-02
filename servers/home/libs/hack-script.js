@@ -1,16 +1,14 @@
 import errorLog from '../ns-utils/error-log.js';
 
-const isUndefined = (variable) => variable === undefined;
-
-/** @param {NS} ns */
+/** @param {NS} ns - The ns module. */
 const scriptHack = async (ns) => {
   const [target, serverMaxMoney, serverMinSecurityLevel] = ns.args;
   if (
-    [target, serverMaxMoney, serverMinSecurityLevel].some((argument) =>
-      isUndefined(argument),
-    )
+    typeof target !== 'string' ||
+    typeof serverMaxMoney !== 'number' ||
+    typeof serverMinSecurityLevel !== 'number'
   ) {
-    errorLog(ns, 'One or more arguments are undefined.');
+    errorLog(ns, 'One or more arguments have an invalid type.');
     return;
   }
 

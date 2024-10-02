@@ -1,10 +1,10 @@
 import errorLog from '../ns-utils/error-log.js';
 
-/** @param {NS} ns */
+/** @param {NS} ns - The ns module. */
 const scriptHack = async (ns) => {
   const [target] = ns.args;
-  if (!target) {
-    errorLog(ns, 'No target provided.');
+  if (typeof target !== 'string') {
+    errorLog(ns, 'Invalid string for target hostname.');
     return;
   }
 

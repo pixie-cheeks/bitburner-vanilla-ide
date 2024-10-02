@@ -1,9 +1,14 @@
-/** @param {NS} ns */
+/**
+ * @param {NS} ns - The ns module.
+ * @returns {string[]} An array of all servers' hostnames.
+ */
 const findAllServers = (ns) => {
+  /**
+   * @type {{ [hostname: string]: {visited: boolean}}}
+   */
   const servers = {};
-  const scriptHome = ns.getHostname();
-  servers[scriptHome] = { visited: false };
 
+  /** @param {string} currentHost - Hostame of the server being visited. */
   const visitServer = (currentHost) => {
     servers[currentHost].visited = true;
 
@@ -15,7 +20,11 @@ const findAllServers = (ns) => {
     });
   };
 
+  const scriptHome = ns.getHostname();
+  servers[scriptHome] = { visited: false };
+
   visitServer(scriptHome);
+
   return Object.keys(servers);
 };
 

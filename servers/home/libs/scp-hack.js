@@ -1,16 +1,16 @@
 import errorLog from '../ns-utils/error-log.js';
-import flatHostnamesList from '../data/non-pservers.js';
+import nonPservers from '../data/non-pservers.js';
 import { isHackable } from '../ns-utils/is-hackable.js';
 import getMaxThreads from '../ns-utils/get-max-threads.js';
 import findBestTarget from '../ns-utils/find-best-target.js';
 import nukeServer from '../ns-utils/nuke-server.js';
 
-/** @param {NS} ns */
+/** @param {NS} ns - The ns module. */
 const scpHack = (ns) => {
   const source = 'home';
   const hackScript = 'libs/hack-script.js';
   const scriptMemoryUsage = ns.getScriptRam(hackScript, source);
-  const hackableServers = flatHostnamesList.filter((hostname) =>
+  const hackableServers = nonPservers.filter((hostname) =>
     isHackable(ns, hostname),
   );
   const bestTarget = findBestTarget(ns, hackableServers);
@@ -23,7 +23,7 @@ const scpHack = (ns) => {
   let numberOfRunningServers = 0;
   hackableServers.forEach((hostname) => {
     if (!ns.scp(hackScript, hostname, source)) {
-      errorLog(`Couldn't copy ${hackScript} from ${source} to ${hostname}`);
+      errorLog(ns, `Couldn't copy ${hackScript} from ${source} to ${hostname}`);
       return;
     }
 

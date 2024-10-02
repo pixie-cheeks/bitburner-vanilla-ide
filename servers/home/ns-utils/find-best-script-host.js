@@ -1,4 +1,8 @@
-/** @param {NS} ns */
+/**
+ * @param {NS} ns - The ns module.
+ * @param {string[]} serversList - An array of servers.
+ * @returns {string} Hostname of the best script hosting server.
+ */
 const findBestScriptHost = (ns, serversList) =>
   [...serversList].sort(
     (a, b) => ns.getServerMaxRam(b) - ns.getServerMaxRam(a),

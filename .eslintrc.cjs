@@ -7,7 +7,14 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
-  extends: ['airbnb-base', 'plugin:unicorn/recommended', 'prettier'],
+  globals: { NS: true },
+  plugins: ['jsdoc'],
+  extends: [
+    'airbnb-base',
+    'plugin:unicorn/recommended',
+    'plugin:jsdoc/recommended',
+    'prettier',
+  ],
   ignorePatterns: ['*', '!servers', '!servers/**/*'],
   rules: {
     'no-unused-vars': 'warn',
@@ -20,6 +27,8 @@ module.exports = {
       { number: { minimumDigits: 0 } },
     ],
     'import/extensions': ['error', 'ignorePackages'],
+    // Disable until I figure out how to resolve project-level imports for eslint
+    'import/no-unresolved': 'off',
     'no-plusplus': 'off',
     'no-param-reassign': ['error', { props: false }],
     'no-await-in-loop': 'off',

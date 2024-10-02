@@ -1,3 +1,9 @@
 {
-  "compilerOptions": { "baseUrl": "." }
+  "compilerOptions": {
+    "target": "ESNext",
+    "checkJs": true,
+    "strict": true,
+    "baseUrl": "."
+  },
+  "include": ["servers/**/*", "global.d.ts"]
 }

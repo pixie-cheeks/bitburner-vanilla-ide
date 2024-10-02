@@ -1,6 +1,10 @@
-/** @param {NS} ns */
 import errorLog from './error-log.js';
 
+/**
+ * @param {NS} ns - The ns module.
+ * @param {string} server - Hostname of the server.
+ * @returns {boolean} True if hackable else false.
+ */
 const checkServer = (ns, server) => {
   let errorMessage;
   if (!server) {

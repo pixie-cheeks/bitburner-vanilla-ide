@@ -8,6 +8,13 @@ module.exports = {
     sourceType: 'module',
   },
   globals: { NS: true },
+  settings: {
+    'import/resolver': {
+      node: {
+        paths: ['.'],
+      },
+    },
+  },
   plugins: ['jsdoc'],
   extends: [
     'airbnb-base',
@@ -27,8 +34,6 @@ module.exports = {
       { number: { minimumDigits: 0 } },
     ],
     'import/extensions': ['error', 'ignorePackages'],
-    // Disable until I figure out how to resolve project-level imports for eslint
-    'import/no-unresolved': 'off',
     'no-plusplus': 'off',
     'no-param-reassign': ['error', { props: false }],
     'no-await-in-loop': 'off',

@@ -2,5 +2,5 @@ node_modules
 mirror
 build
 
-# This file is pulled automatically after running viteburner
+# This file is pulled automatically with its own updates
 NetscriptDefinitions.d.ts

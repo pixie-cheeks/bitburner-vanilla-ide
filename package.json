@@ -11,11 +11,13 @@
     "lint:types": "tsc --project jsconfig.json"
   },
   "devDependencies": {
+    "@eslint/js": "^9.11.1",
     "esbuild": "^0.23.1",
     "esbuild-bitburner-plugin": "^1.6.2",
     "eslint": "^8.57.1",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-unicorn": "^55.0.0",
     "prettier": "^3.3.3",
     "typescript": "^5.6.2"

@@ -15,13 +15,7 @@ module.exports = {
       },
     },
   },
-  plugins: ['jsdoc'],
-  extends: [
-    'airbnb-base',
-    'plugin:unicorn/recommended',
-    'plugin:jsdoc/recommended',
-    'prettier',
-  ],
+  extends: ['airbnb-base', 'plugin:unicorn/recommended', 'prettier'],
   ignorePatterns: ['*', '!servers', '!servers/**/*'],
   rules: {
     'no-unused-vars': 'warn',

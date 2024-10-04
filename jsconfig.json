@@ -5,5 +5,5 @@
     "strict": true,
     "baseUrl": "."
   },
-  "include": ["servers/**/*", "global.d.ts"]
+  "include": ["servers", "global.d.ts"]
 }

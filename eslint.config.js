@@ -12,6 +12,10 @@ import configPrettier from 'eslint-config-prettier';
 import js from '@eslint/js';
 import globals from 'globals';
 
+const sourceFiles = ['servers'];
+const projectFiles = ['eslint.config.js', 'config.js'];
+const fileAllowList = [...sourceFiles, ...projectFiles];
+
 const airbnbRules = [
   airbnbBestPractices,
   airbnbErrors,
@@ -46,7 +50,7 @@ const customImportRules = {
   'import/no-extraneous-dependencies': [
     'error',
     // Don't check for devDeps on these files
-    { devDependencies: ['eslint.config.js', 'config.js'] },
+    { devDependencies: projectFiles },
   ],
 };
 
@@ -114,7 +118,7 @@ const customRules = {
 };
 
 const configArray = [
-  { ignores: ['*', '!servers', '!{config,eslint.config}.js'] },
+  { ignores: ['*', ...fileAllowList.map((globStr) => `!${globStr}`)] },
   js.configs.recommended,
   ...airbnbRules,
   pluginUnicorn.configs['flat/recommended'],

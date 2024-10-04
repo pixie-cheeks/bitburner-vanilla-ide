@@ -1,99 +1,130 @@
 import airbnbBestPractices from 'eslint-config-airbnb-base/rules/best-practices';
 import airbnbErrors from 'eslint-config-airbnb-base/rules/errors';
 import airbnbEs6 from 'eslint-config-airbnb-base/rules/es6';
+import airbnbImports from 'eslint-config-airbnb-base/rules/imports';
 import airbnbNode from 'eslint-config-airbnb-base/rules/node';
 import airbnbStrict from 'eslint-config-airbnb-base/rules/strict';
+import airbnbStyle from 'eslint-config-airbnb-base/rules/style';
 import airbnbVariables from 'eslint-config-airbnb-base/rules/variables';
 import pluginUnicorn from 'eslint-plugin-unicorn';
 import pluginImport from 'eslint-plugin-import';
 import configPrettier from 'eslint-config-prettier';
 import js from '@eslint/js';
+import globals from 'globals';
 
-export default [
-  { files: ['**/*.js'] },
-  { ignores: ['*', '!servers', '!servers/**/*', '!{config,eslint.config}.js'] },
+const airbnbRules = [
+  airbnbBestPractices,
+  airbnbErrors,
+  airbnbEs6,
+  airbnbImports,
+  airbnbNode,
+  airbnbStrict,
+  airbnbStyle,
+  airbnbVariables,
+].map((ruleFile) => ({ rules: ruleFile.rules }));
+
+const languageOptions = {
+  globals: {
+    NS: true,
+    ...globals.node,
+  },
+
+  ecmaVersion: 'latest',
+  sourceType: 'module',
+};
+
+const settings = {
+  'import/resolver': {
+    node: {
+      paths: ['.'],
+    },
+  },
+};
+
+const customImportRules = {
+  'import/extensions': ['error', 'ignorePackages'],
+  'import/no-extraneous-dependencies': [
+    'error',
+    // Don't check for devDeps on these files
+    { devDependencies: ['eslint.config.js', 'config.js'] },
+  ],
+};
+
+const customUnicornRules = {
+  'unicorn/better-regex': 'warn',
+  'unicorn/no-array-for-each': 'off',
+  'unicorn/prevent-abbreviations': 'off',
+  'unicorn/numeric-separators-style': [
+    'error',
+    {
+      number: {
+        minimumDigits: 0,
+      },
+    },
+  ],
+};
+
+const customStyleRules = {
+  'lines-between-class-members': [
+    'error',
+    {
+      enforce: [
+        {
+          blankLine: 'always',
+          prev: '*',
+          next: 'method',
+        },
+        {
+          blankLine: 'always',
+          prev: 'method',
+          next: '*',
+        },
+        {
+          blankLine: 'never',
+          prev: 'field',
+          next: 'field',
+        },
+      ],
+    },
+  ],
+};
+
+const customRules = {
+  'no-unused-vars': 'warn',
+  'no-console': 'off',
+  'func-style': 'error',
+  'no-plusplus': 'off',
+  'no-await-in-loop': 'off',
+  'no-param-reassign': [
+    'error',
+    {
+      props: false,
+    },
+  ],
+  'no-constant-condition': [
+    'error',
+    {
+      checkLoops: false,
+    },
+  ],
+
+  ...customStyleRules,
+  ...customImportRules,
+  ...customUnicornRules,
+};
+
+const configArray = [
+  { ignores: ['*', '!servers', '!{config,eslint.config}.js'] },
   js.configs.recommended,
-  { rules: airbnbBestPractices.rules },
-  { rules: airbnbErrors.rules },
-  { rules: airbnbEs6.rules },
-  { rules: airbnbNode.rules },
-  { rules: airbnbStrict.rules },
-  { rules: airbnbVariables.rules },
+  ...airbnbRules,
   pluginUnicorn.configs['flat/recommended'],
   pluginImport.flatConfigs.recommended,
   {
-    languageOptions: {
-      globals: {
-        NS: true,
-      },
-
-      ecmaVersion: 'latest',
-      sourceType: 'module',
-    },
-
-    settings: {
-      'import/resolver': {
-        node: {
-          paths: ['.'],
-        },
-      },
-    },
-
-    rules: {
-      'no-unused-vars': 'warn',
-      'no-console': 'off',
-      'unicorn/better-regex': 'warn',
-      'func-style': 'error',
-      'no-plusplus': 'off',
-      'no-await-in-loop': 'off',
-      'no-param-reassign': [
-        'error',
-        {
-          props: false,
-        },
-      ],
-      'no-constant-condition': [
-        'error',
-        {
-          checkLoops: false,
-        },
-      ],
-      'lines-between-class-members': [
-        'error',
-        {
-          enforce: [
-            {
-              blankLine: 'always',
-              prev: '*',
-              next: 'method',
-            },
-            {
-              blankLine: 'always',
-              prev: 'method',
-              next: '*',
-            },
-            {
-              blankLine: 'never',
-              prev: 'field',
-              next: 'field',
-            },
-          ],
-        },
-      ],
-
-      'import/extensions': ['error', 'ignorePackages'],
-
-      'unicorn/no-array-for-each': 'off',
-      'unicorn/prevent-abbreviations': 'off',
-      'unicorn/numeric-separators-style': [
-        'error',
-        {
-          number: {
-            minimumDigits: 0,
-          },
-        },
-      ],
-    },
+    languageOptions,
+    settings,
+    rules: customRules,
   },
   configPrettier,
 ];
+
+export default configArray;

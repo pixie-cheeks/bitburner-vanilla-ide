@@ -1,6 +1,7 @@
 import airbnbBestPractices from 'eslint-config-airbnb-base/rules/best-practices';
 import airbnbErrors from 'eslint-config-airbnb-base/rules/errors';
 import airbnbEs6 from 'eslint-config-airbnb-base/rules/es6';
+import airbnbNode from 'eslint-config-airbnb-base/rules/node';
 import airbnbStrict from 'eslint-config-airbnb-base/rules/strict';
 import airbnbVariables from 'eslint-config-airbnb-base/rules/variables';
 import pluginUnicorn from 'eslint-plugin-unicorn';
@@ -15,6 +16,7 @@ export default [
   { rules: airbnbBestPractices.rules },
   { rules: airbnbErrors.rules },
   { rules: airbnbEs6.rules },
+  { rules: airbnbNode.rules },
   { rules: airbnbStrict.rules },
   { rules: airbnbVariables.rules },
   pluginUnicorn.configs['flat/recommended'],

@@ -108,7 +108,7 @@ const customRules = {
   'no-constant-condition': [
     'error',
     {
-      checkLoops: false,
+      checkLoops: 'allExceptWhileTrue',
     },
   ],
 

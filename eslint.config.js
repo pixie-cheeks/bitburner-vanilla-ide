@@ -1,3 +1,4 @@
+// @ts-nocheck
 import airbnbBestPractices from 'eslint-config-airbnb-base/rules/best-practices';
 import airbnbErrors from 'eslint-config-airbnb-base/rules/errors';
 import airbnbEs6 from 'eslint-config-airbnb-base/rules/es6';

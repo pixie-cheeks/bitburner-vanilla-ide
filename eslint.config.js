@@ -95,6 +95,10 @@ const customStyleRules = {
   ],
 };
 
+const customJsdocRules = {
+  'jsdoc/require-description': 'warn',
+};
+
 const customRules = {
   'no-unused-vars': 'warn',
   'no-console': 'off',
@@ -117,6 +121,7 @@ const customRules = {
   ...customStyleRules,
   ...customImportRules,
   ...customUnicornRules,
+  ...customJsdocRules,
 };
 
 const configArray = [

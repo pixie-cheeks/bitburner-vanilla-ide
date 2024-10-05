@@ -1,7 +1,10 @@
 import allServers from 'servers/home/data/all-servers.js';
 import createProcessLog from 'servers/home/ns-utils/create-process-log.js';
 
-/** @param {NS} ns - ns module */
+/**
+ * List running processes from all servers.
+ * @param {NS} ns - ns module
+ */
 const superPs = (ns) => {
   /** @type {string[]} */
   const messages = [];

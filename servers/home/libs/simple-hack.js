@@ -1,6 +1,9 @@
 import errorLog from '../ns-utils/error-log.js';
 
-/** @param {NS} ns - The ns module. */
+/**
+ * A super basic hack function that accepts user input.
+ * @param {NS} ns - The ns module.
+ */
 const scriptHack = async (ns) => {
   const [target] = ns.args;
   if (typeof target !== 'string') {

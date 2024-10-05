@@ -7,6 +7,7 @@ import nukeServer from '../ns-utils/nuke-server.js';
 import getMaxThreads from '../ns-utils/get-max-threads.js';
 
 /**
+ * Check whether the input is valid for the hack script.
  * @param {object} inputs - Inputs for this function.
  * @param {NS} inputs.ns - The ns module.
  * @param {string} inputs.scriptHost - Name of the host that will run the script.
@@ -35,7 +36,10 @@ const checkForError = ({ ns, scriptHost, target, hackScript }) => {
   return false;
 };
 
-/** @param {NS} ns - The ns module. */
+/**
+ * Prepare everything for the hack-script and execute it.
+ * @param {NS} ns - The ns module.
+ */
 const preHackScript = (ns) => {
   const hackableServers = nonPservers.filter((hostname) =>
     isHackable(ns, hostname),
@@ -60,6 +64,7 @@ const preHackScript = (ns) => {
   const serverMaxMoney = ns.getServerMaxMoney(target);
   const serverMinSecurityLevel = ns.getServerMinSecurityLevel(target);
   /**
+   * Script execution command for brevity.
    * @param {number} threads - Number of threads for the script.
    * @returns {number} Any number greater than 0 if successful else 0.
    */

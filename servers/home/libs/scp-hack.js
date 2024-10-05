@@ -5,7 +5,11 @@ import getMaxThreads from '../ns-utils/get-max-threads.js';
 import findBestTarget from '../ns-utils/find-best-target.js';
 import nukeServer from '../ns-utils/nuke-server.js';
 
-/** @param {NS} ns - The ns module. */
+/**
+ * Copy hack-script to all rootable servers and run it with maximum possible
+ * threads on the best target.
+ * @param {NS} ns - The ns module.
+ */
 const scpHack = (ns) => {
   const source = 'home';
   const hackScript = 'libs/hack-script.js';

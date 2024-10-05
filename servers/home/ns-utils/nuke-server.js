@@ -1,6 +1,7 @@
 import repeat from '../utils/repeat.js';
 
 /**
+ * Get root access for the provided server.
  * @param {NS} ns - The ns module.
  * @param {string} hostname - Hostname of the server to nuke.
  */

@@ -1,4 +1,5 @@
 /**
+ * Repeat the execution of a callback n times.
  * @param {number} times - Number of times to repeat.
  * @param {(iteration: number) => any} callback - Callback to execute on each iteration.
  */

@@ -1,4 +1,5 @@
 /**
+ * Find all servers on the network.
  * @param {NS} ns - The ns module.
  * @returns {string[]} An array of all servers' hostnames.
  */
@@ -8,7 +9,10 @@ const findAllServers = (ns) => {
    */
   const servers = {};
 
-  /** @param {string} currentHost - Hostame of the server being visited. */
+  /**
+   * Visit all non-visited servers recursively.
+   * @param {string} currentHost - Hostame of the server being visited.
+   */
   const visitServer = (currentHost) => {
     servers[currentHost].visited = true;
 

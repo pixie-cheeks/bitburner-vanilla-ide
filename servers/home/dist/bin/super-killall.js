@@ -1,6 +1,9 @@
 import allServers from 'servers/home/data/all-servers.js';
 
-/** @param {NS} ns - The ns module */
+/**
+ * Kill running processes from all servers.
+ * @param {NS} ns - The ns module
+ */
 const superKillAll = (ns) => {
   allServers.forEach((hostname) => {
     const processes = ns.ps(hostname);

@@ -1,4 +1,6 @@
 /**
+ * Get the maximum amount of threads a server can run given the ram usage
+ * of a script.
  * @param {NS} ns - The ns module.
  * @param {string} hostname - Hostname of the server that will run the script.
  * @param {number} scriptMemoryUsage - The script's memory usage.

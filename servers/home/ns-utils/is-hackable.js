@@ -7,6 +7,7 @@ const portOpeners = [
 ];
 
 /**
+ * Check if the player ha the required number of port openers for a server.
  * @param {NS} ns - The ns module.
  * @param {string} hostname - Hostname of the server to check.
  * @returns {boolean} True if required ports can be opened else false.
@@ -20,6 +21,7 @@ const canOpenRequiredPorts = (ns, hostname) => {
 };
 
 /**
+ * Check if the player has the required hacking level for a server.
  * @param {NS} ns - The ns module.
  * @param {string} hostname - Hostname of the server to check with.
  * @returns {boolean} True if player has required hacking level else false.
@@ -28,6 +30,7 @@ const hasRequiredHackLevel = (ns, hostname) =>
   ns.getServerRequiredHackingLevel(hostname) <= ns.getHackingLevel();
 
 /**
+ * Check if the provided server can be hacked by the player.
  * @param {NS} ns - The ns module.
  * @param {string} hostname - Hostname of the server to check with.
  * @returns {boolean} - True if server is hackable else false.

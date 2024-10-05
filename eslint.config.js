@@ -10,6 +10,7 @@ import airbnbVariables from 'eslint-config-airbnb-base/rules/variables';
 import pluginUnicorn from 'eslint-plugin-unicorn';
 import pluginImport from 'eslint-plugin-import';
 import configPrettier from 'eslint-config-prettier';
+import jsdoc from 'eslint-plugin-jsdoc';
 import js from '@eslint/js';
 import globals from 'globals';
 
@@ -124,7 +125,9 @@ const configArray = [
   ...airbnbRules,
   pluginUnicorn.configs['flat/recommended'],
   pluginImport.flatConfigs.recommended,
+  jsdoc.configs['flat/recommended'],
   {
+    plugins: { jsdoc },
     languageOptions,
     settings,
     rules: customRules,

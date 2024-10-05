@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
+    "checkCode": "$npm_execpath lint && $npm_execpath lint:types && $npm_execpath format:check",
     "start": "node ./config.js",
     "format": "prettier --write .",
     "format:check": "prettier --check .",

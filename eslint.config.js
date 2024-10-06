@@ -15,7 +15,11 @@ import js from '@eslint/js';
 import globals from 'globals';
 
 const sourceFiles = ['servers'];
-const projectFiles = ['eslint.config.js', 'config.js'];
+const projectFiles = [
+  'eslint.config.js',
+  'config.js',
+  'deprecated-eslint-rule.js',
+];
 const fileAllowList = [...sourceFiles, ...projectFiles];
 
 const airbnbRules = [
@@ -39,11 +43,14 @@ const languageOptions = {
   sourceType: 'module',
 };
 
+const plugins = {
+  jsdoc,
+};
+
 const settings = {
   'import/resolver': {
-    node: {
-      paths: ['.'],
-    },
+    node: { paths: ['.'] },
+    exports: true,
   },
 };
 
@@ -132,7 +139,7 @@ const configArray = [
   pluginImport.flatConfigs.recommended,
   jsdoc.configs['flat/recommended'],
   {
-    plugins: { jsdoc },
+    plugins,
     languageOptions,
     settings,
     rules: customRules,
